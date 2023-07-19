@@ -1,6 +1,6 @@
 "use client"
 
-import { DatePicker } from "@/ui/DatePicker"
+import { DatePicker, DateRangePicker } from "@/ui/DatePicker"
 
 const TestDatePicker = (): JSX.Element => {
   const onDateChangeHandler = (value: Date[] | "", id: string) => {
@@ -9,10 +9,16 @@ const TestDatePicker = (): JSX.Element => {
 
   return (
     <div className="h-screen bg-slate-100 pt-20">
-      <div id="firstAutocomplete" className="flex flex-col items-center">
+      <div className="flex flex-col items-center">
+        <div className="mb-8">
+          <DateRangePicker
+            id="dateRange"
+            onDateChange={onDateChangeHandler}
+          ></DateRangePicker>
+        </div>
         <div className="mb-8">
           <DatePicker
-            id="testDatePicker1"
+            id="singleDate"
             onDateChange={onDateChangeHandler}
           ></DatePicker>
         </div>

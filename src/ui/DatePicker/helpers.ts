@@ -195,7 +195,14 @@ function datesRangeRegex(value: string): boolean {
   return false
 }
 
+/** validation for DatePicker component */
 function isDateValid(value: string): boolean {
+  if (typeof value !== "string") return false
+  return oneDateRegex(value) ? true : false
+}
+
+/** validation for DateRangePicker component */
+function isDateRangeValid(value: string): boolean {
   if (typeof value !== "string") return false
 
   if (
@@ -297,6 +304,7 @@ export {
   getWeekDays,
   padding,
   isDateValid,
+  isDateRangeValid,
   checkDateType,
   formatDate,
   convertDateArrayToString,

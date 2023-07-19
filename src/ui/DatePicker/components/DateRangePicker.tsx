@@ -6,24 +6,24 @@ import type {
   _DatePickerProps,
   _DateTypes,
   _KeyboardEvent,
-} from "./types"
+} from "../types"
 
-import { Calendar } from "./components/Calendar"
-import { CalendarIcon } from "./components/CalendarIcon"
+import { Calendar } from "./Calendar"
+import { CalendarIcon } from "./CalendarIcon"
 
-import { calendarBuilder } from "./calendarBuilder"
-import { useCalendar } from "./useCalendar"
+import { calendarBuilder } from "../calendarBuilder"
+import { useCalendar } from "../useCalendar"
 import {
-  isDateValid,
+  isDateRangeValid,
   checkDateType,
   formatDate,
   convertDateArrayToString,
   areDatesOrdered,
   areMonthYearsOrdered,
-} from "./helpers"
-import { addOutsideClickAndEscEvents } from "../helpers/addOutsideClickAndEscEvents"
+} from "../helpers"
+import { addOutsideClickAndEscEvents } from "@/ui/helpers/addOutsideClickAndEscEvents"
 
-export const DatePicker = ({
+export const DateRangePicker = ({
   onDateChange,
   id,
 }: _DatePickerProps): JSX.Element => {
@@ -216,7 +216,7 @@ export const DatePicker = ({
    */
   useEffect(() => {
     if (value === "") onDateChange(value, id)
-    else if (isDateValid(value)) {
+    else if (isDateRangeValid(value)) {
       const formattedDate = formatDate(value)
       /** if value can't be formatted do no pass anything to parent controller */
       formattedDate ? onDateChange(formattedDate, id) : ""
@@ -227,7 +227,7 @@ export const DatePicker = ({
   const inputValidityStyle =
     value === ""
       ? ""
-      : isDateValid(value)
+      : isDateRangeValid(value)
       ? "border-green-300 bg-green-50/50 text-green-500"
       : "border-red-300 bg-red-50/90 text-red-500"
 

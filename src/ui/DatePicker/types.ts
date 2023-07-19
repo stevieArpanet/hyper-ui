@@ -3,8 +3,8 @@ export interface _CalendarProps {
   isOpen: boolean
   dispatchChangeDate: (action: _CalendarHookAction) => void
   onDayClick: (date: any) => void
-  onMonthClick: (month: string) => void
-  onYearClick: (year: string) => void
+  onMonthClick?: (month: string) => void
+  onYearClick?: (year: string) => void
 }
 
 export interface _CalendarIconProps {

@@ -34,10 +34,23 @@ export const Calendar = ({
     onDayClick(date)
   }
 
+  const onMonthClickHandler = (): void => {
+    /** if onMonthClick callback is provided, trigger it (DateRangePicker) */
+    if (onMonthClick) onMonthClick(`${month}/${year}`)
+  }
+
+  const onYearClickHandler = (): void => {
+    /** if onYearClick callback is provided, trigger it (DateRangePicker) */
+    if (onYearClick) onYearClick(year)
+  }
+
   /** reset selected date when calendar is closed */
   useEffect(() => {
     selectedSet([])
   }, [isOpen])
+
+  /** show pointer only for DateRangePicker */
+  const titlePointerStyle = onMonthClick ? "cursor-pointer" : ""
 
   return (
     <div
@@ -62,9 +75,9 @@ export const Calendar = ({
             className="h-4 w-4 cursor-pointer font-bold text-blue-500"
             onClick={() => dispatchChangeDate("backwardMonth")}
           />
-          <div id="calendarTitle" className="flex cursor-pointer gap-1">
-            <p onClick={() => onMonthClick(`${month}/${year}`)}>{monthName}</p>
-            <p onClick={() => onYearClick(year)}>{year}</p>
+          <div id="calendarTitle" className={`${titlePointerStyle} flex gap-1`}>
+            <p onClick={() => onMonthClickHandler()}>{monthName}</p>
+            <p onClick={() => onYearClickHandler()}>{year}</p>
           </div>
           <ChevronRightIcon
             className="h-4 w-4 cursor-pointer font-bold text-blue-500"
