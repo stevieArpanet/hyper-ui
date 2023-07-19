@@ -23,5 +23,6 @@
         "explicitTypes": "preserve"
       }
     }
-  ]
+  ],
+  "tailwindFunctions": ["tw"]
 }
